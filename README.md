@@ -1,2 +1,2 @@
-# financeDevCT
+# FinanceDevCT
 금융 개발자를 꿈꾸는 기턴들의 발버둥 - 코딩테스트 대비 스터디
