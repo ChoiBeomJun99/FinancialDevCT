@@ -1,0 +1,53 @@
+-- 코드를 입력하세요
+
+SELECT CATEGORY, MAX(PRICE) AS MAX_PRICE, PRODUCT_NAME
+FROM FOOD_PRODUCT
+
+WHERE PRICE IN (SELECT MAX(PRICE)
+               FROM FOOD_PRODUCT 
+               GROUP BY CATEGORY)
+AND CATEGORY IN ('과자','국','김치','식용유')
+
+GROUP BY CATEGORY
+ORDER BY MAX_PRICE DESC
+
+/*
+SELECT CATEGORY, MAX(PRICE) AS MAX_PRICE , PRODUCT_NAME
+
+FROM FOOD_PRODUCT
+WHERE PRICE IN (SELECT MAX(PRICE)
+               FROM FOOD_PRODUCT
+               GROUP BY CATEGORY)
+               
+AND CATEGORY IN ('과자','국','김치','식용유')
+
+GROUP BY CATEGORY
+
+ORDER BY MAX_PRICE DESC
+*/
+
+/*
+SELECT CATEGORY, MAX(PRICE) AS MAX_PRICE , PRODUCT_NAME
+
+FROM FOOD_PRODUCT
+*/
+
+/*
+WHERE CATEGORY = '과자' OR
+    CATEGORY =  '국' OR
+    CATEGORY = '김치' OR
+    CATEGORY = '식용유'
+
+MAX(PRICE)와 PRODUCT_NAME이 원래 동일한 행에 있던 값이 출력되는 것이 아닙니다.
+
+따라서 카테고리별로 분류한 후에, 그 안에서 각각의 가격이 제일 높은 것을 골라야함
+WHERE PRICE IN (SELECT MAX(PRICE)
+               FROM FOOD_PRODUCT
+               GROUP BY CATEGORY)
+               
+AND CATEGORY IN ('과자','국','김치','식용유')
+
+GROUP BY CATEGORY
+
+ORDER BY MAX_PRICE DESC
+*/
