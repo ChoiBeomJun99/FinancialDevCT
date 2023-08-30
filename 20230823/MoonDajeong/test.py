@@ -3,7 +3,8 @@ import pandas as pd
 
 # %%
 #알고리즘(챌린지)
-
+#ㅇㅇ
+import pandas as pd
 want = ['banana','apple','rice','pork']
 number = [3,1,2,2]
 discount = ['chicken','apple','apple','banana','rice','apple','pork','banana','pork','rice','pot','banana','apple','banana']
@@ -18,6 +19,10 @@ for i in range(0,len(discount)-9):
         answer += 1
 print(answer)
 #%%
-for i in range(0,1):
+for i in range(0,2):
     print(i)
+# %%
+import pandas as pd
+# %%
+print('aa')
 # %%
