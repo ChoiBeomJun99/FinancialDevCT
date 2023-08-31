@@ -1,3 +1,5 @@
+# https://school.programmers.co.kr/learn/courses/30/lessons/147355
+
 def solution(t, p):
     answer = 0
     x = len(p)

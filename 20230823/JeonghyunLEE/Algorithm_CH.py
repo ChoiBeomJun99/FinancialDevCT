@@ -6,10 +6,8 @@ def solution(record):
     
     for r in record:
         r = r.split(" ")
-        if r[0] == 'Enter':
+        if r[0] in ['Enter', 'Change']:
             u_dict[r[1]] = r[2] # 마지막 입장한 id 저장
-        elif r[0] == 'Change':
-            u_dict[r[1]] = r[2] # 바뀐 id로 저장
     
     for r in record:
         r = r.split(" ")
