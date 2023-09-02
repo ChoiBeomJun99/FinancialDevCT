@@ -14,7 +14,7 @@ def calFee(fees, totalParkingTime):
         if fees[0] >= parkingTime:
             tmp.append(fees[1])
     
-        # 누적 주차 시간이 기본 시간 이상
+        # 누적 주차 시간이 기본 시간 이상s
         else:
             extraTime = parkingTime - fees[0] # 초과 시간
             extraFee = math.ceil(extraTime / fees[2]) * fees[3]
