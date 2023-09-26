@@ -1,17 +1,11 @@
-# https://school.programmers.co.kr/learn/courses/30/lessons/135808
+# https://school.programmers.co.kr/learn/courses/30/lessons/12982
 
-def solution(k, m, score):
-    x = 0
-    answer = []
-    box = []
-    score.sort(reverse=True)
-    for s in score:
-        box.append(s)
-        if len(box) == m:
-            answer.append(box)
-            box = []
-        
-    for a in answer:
-        x += min(a) * len(a)
-    
-    return x
+def solution(d, budget):
+    answer = 0
+    d.sort()
+    for i in d:
+        budget -= i
+        if budget < 0:
+            break
+        answer += 1
+    return answer
