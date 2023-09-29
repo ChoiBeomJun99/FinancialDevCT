@@ -1,34 +1,17 @@
-from collections import deque
+def solution(numbers):
+    answer = []
+    numbers_bin = []
 
+    for number in numbers:
+        numbers_bin = list("0" + bin(number)[2:])
+        idx = "".join(numbers_bin).rfind("0")
+        numbers_bin[idx] = "1"
 
-def solution(queue1, queue2):
-    queue1 = deque(queue1)
-    queue2 = deque(queue2)
-    answer = 0
-    limit = (len(queue1)) * 4
-    tot1 = sum(queue1)
-    tot2 = sum(queue2)
-    total = tot1 + tot2
+        if number % 2 != 0:  # 홀수라면
+            numbers_bin[idx + 1] = "0"
 
-    if total % 2 != 0:
-        return -1
+        answer.append(int("".join(numbers_bin), 2))
 
-    while True:
-        if tot1 > tot2:
-            target = queue1.popleft()
-            queue2.append(target)
-            tot1 -= target
-            tot2 += target
-            answer += 1
-        elif tot1 < tot2:
-            target = queue2.popleft()
-            queue1.append(target)
-            tot1 += target
-            tot2 -= target
-            answer += 1
-        else:
-            break
-        if answer == limit:
-            answer = -1
-            break
+        # int(인자,2) => 2진수를 10진수로 변환해줌
+
     return answer
