@@ -1,6 +1,10 @@
--- https://school.programmers.co.kr/learn/courses/30/lessons/59034
+-- https://school.programmers.co.kr/learn/courses/30/lessons/144855
 
 -- 코드를 입력하세요
-SELECT *
-FROM ANIMAL_INS
-ORDER BY ANIMAL_ID
+SELECT CATEGORY, SUM(SALES) AS TOTAL_SALES
+FROM BOOK B
+    JOIN BOOK_SALES BS
+    ON B.BOOK_ID = BS.BOOK_ID
+WHERE SALES_DATE LIKE '2022-01%'
+GROUP BY CATEGORY
+ORDER BY CATEGORY 
