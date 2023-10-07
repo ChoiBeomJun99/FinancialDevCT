@@ -59,3 +59,60 @@
                 
 #     return answer
 
+
+def replaceMelody(melody):
+    
+    if 'C#' in melody:
+        melody = melody.replace('C#', 'c')
+    
+    if 'D#' in melody:
+        melody = melody.replace('D#', 'd')
+        
+    if 'F#' in melody:
+        melody = melody.replace('F#', 'f')
+        
+    if 'G#' in melody:
+        melody = melody.replace('G#', 'g')
+        
+    if 'A#' in melody:
+        melody = melody.replace('A#', 'a')
+        
+    return melody
+
+def solution(m, musicinfos):
+    answer = ''
+    howLong = {} # 각 곡의 재생된 시간 비교를 하기위한 dict
+    
+    for i in musicinfos:
+        tmp = i.split(',') # 0, 1: 재생, 종료 시각 / 2: 곡이름 / 3:멜로디 루틴
+        
+        start = tmp[0].split(':')
+        end = tmp[1].split(':')
+    
+        # 재생된 시간 
+        howLong[tmp[2]] = (int(end[0]) - int(start[0])) * 60 + (int(end[1]) - int(start[1]))
+        
+    m = replaceMelody(m) # m도 변화
+    
+    # 본격 로직 시작하기
+    for i in musicinfos:
+        fullMelody = ""
+        start, end, name, song = i.split(',')
+        
+        songTime = len(song) - song.count('#') #실질적인 노래시간
+        playTime = howLong[name] #재생시간
+        
+        #song에 대한 반복을 처리해줘야함
+        song = replaceMelody(song)
+        
+        for i in range(0, playTime // songTime):
+            fullMelody += song
+        
+        fullMelody += song[0:playTime % songTime]
+        
+        if m in fullMelody:
+            if answer == '' or (answer != " " and (howLong[name] > howLong[answer])):
+                answer = name
+                    
+    return "(None)" if answer == '' else answer
+
